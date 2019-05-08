@@ -18,7 +18,7 @@ assistant.intent('Opening Price', conv => {
 	const priceType = conv.parameters['price-type'];
 	request('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords='+name+'&apikey='+apiKey, function (err, res, body) {
 	    if (!err && res.statusCode == 200) {
-	       console.log(body);
+	       console.log(body["bestMatches"]);
 	       let bestMatch = body.bestMatches[0];
 	       let symbol = bestMatch["1. symbol"];
 	       let curr = bestMatch["8. currency"];
