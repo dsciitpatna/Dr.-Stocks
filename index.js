@@ -11,8 +11,7 @@ server.use(bodyParser.json({type: 'application/json'}));
 
 assistant.intent('Opening Price', conv => {
 	let name = conv.parameters.any;
-	
-	const priceType = conv.parameters.price;
+	const priceType = conv.parameters['price-type'];
 	console.log(conv.parameters);
 	conv.ask('Hello, welcome ' + name + priceType);
 });
