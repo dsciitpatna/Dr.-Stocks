@@ -1,0 +1,19 @@
+{
+  "name": "dr.stock",
+  "version": "1.0.0",
+  "description": "Backend for webhook of google action named Dr. Stock",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsciitpatna/Dr.-Stocks.git"
+  },
+  "author": "Vatsal Singhal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dsciitpatna/Dr.-Stocks/issues"
+  },
+  "homepage": "https://github.com/dsciitpatna/Dr.-Stocks#readme"
+}
