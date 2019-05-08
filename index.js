@@ -11,8 +11,9 @@ server.use(bodyParser.json({type: 'application/json'}));
 
 assistant.intent('Opening Price', conv => {
 	let name = conv.parameters.any;
-	console.log('Hello, welcome ' + name);
-	conv.ask('Hello, welcome ' + name);
+	
+	const priceType = conv.parameters.price-type;
+	conv.ask('Hello, welcome ' + name + priceType);
 });
 
 server.post('/webhook', assistant);
