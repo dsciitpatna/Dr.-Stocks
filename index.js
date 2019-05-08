@@ -23,6 +23,8 @@ assistant.intent('Opening Price', conv => {
 	       let bestMatch = resp.bestMatches[0];
 	       let symbol = bestMatch["1. symbol"];
 	       let curr = bestMatch["8. currency"];
+	       console.log('Hello, welcome ' + name + priceType+symbol+curr);
+	conv.ask('Hello, welcome ' + name + priceType+symbol+curr);
 	     }
 	     if(priceType === 'closing price'){
 
@@ -36,8 +38,7 @@ assistant.intent('Opening Price', conv => {
 	else if(priceType === 'low price'){
 
 	}
-	console.log('Hello, welcome ' + name + priceType+symbol+curr);
-	conv.ask('Hello, welcome ' + name + priceType+symbol+curr);
+	
 	});
 
 });
