@@ -14,10 +14,14 @@ server.use(bodyParser.json({type: 'application/json'}));
 
 assistant.intent('Opening Price', conv => {
 	let name = conv.parameters.any;
+	let curr = "USD";
+	let symbol = "";
 	const priceType = conv.parameters['price-type'];
 	request('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords='+name+'&apikey='+apiKey, function (err, res, body) {
 	    if (!err && res.statusCode == 200) {
-	        console.log(body) // Print the google web page.
+	       let bestMatch = body['bestMatches'][0];
+	       symbol = bestMatch["1. symbol"];
+	       curr = bestMatch["8. currency"];
 	     }
 	})
 	if(priceType === 'closing price'){
@@ -32,7 +36,7 @@ assistant.intent('Opening Price', conv => {
 	else if(priceType === 'low price'){
 
 	}
-	conv.ask('Hello, welcome ' + name + priceType);
+	conv.ask('Hello, welcome ' + name + priceType+symbol+curr);
 });
 
 server.post('/webhook', assistant);
