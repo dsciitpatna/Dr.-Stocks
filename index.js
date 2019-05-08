@@ -13,6 +13,7 @@ assistant.intent('Opening Price', conv => {
 	let name = conv.parameters.any;
 	
 	const priceType = conv.parameters.price;
+	console.log(conv.parameters);
 	conv.ask('Hello, welcome ' + name + priceType);
 });
 
