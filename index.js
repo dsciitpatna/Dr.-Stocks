@@ -9,7 +9,7 @@ const assistant = dialogflow();
 server.set('port', process.env.PORT || 5000);
 server.use(bodyParser.json({type: 'application/json'}));
 
-assistant.intent('helloWorld', conv => {
+assistant.intent('Opening Price', conv => {
 	let name = conv.parameters.any;
 	console.log('Hello, welcome ' + name);
 	conv.ask('Hello, welcome ' + name);
