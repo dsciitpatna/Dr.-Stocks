@@ -24,8 +24,7 @@ assistant.intent('Opening Price', conv => {
 	       let symbol = bestMatch["1. symbol"];
 	       let curr = bestMatch["8. currency"];
 	     }
-	});
-	if(priceType === 'closing price'){
+	     if(priceType === 'closing price'){
 
 	}
 	else if(priceType === 'opening price'){
@@ -39,6 +38,8 @@ assistant.intent('Opening Price', conv => {
 	}
 	console.log('Hello, welcome ' + name + priceType+symbol+curr);
 	conv.ask('Hello, welcome ' + name + priceType+symbol+curr);
+	});
+
 });
 
 server.post('/webhook', assistant);
