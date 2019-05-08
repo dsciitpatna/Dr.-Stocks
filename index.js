@@ -15,7 +15,7 @@ server.use(bodyParser.json({type: 'application/json'}));
 assistant.intent('Opening Price', conv => {
 	let name = conv.parameters.any;
 	const priceType = conv.parameters['price-type'];
-	request('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords='+name+'&apikey='+apikey, function (err, res, body) {
+	request('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords='+name+'&apikey='+apiKey, function (err, res, body) {
 	    if (!err && res.statusCode == 200) {
 	        console.log(body) // Print the google web page.
 	     }
