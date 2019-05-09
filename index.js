@@ -19,9 +19,9 @@ assistant.intent('Opening Price', conv => {
 	  const priceType = conv.parameters['price-type'];
       axios.get('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords='+name+'&apikey='+apiKey)
       .then( (res) => {
-      	  console.log(res);
-	      if (res.statusCode == 200) {
-		    let resp = JSON.parse(res.body);
+      	  console.log(res.status);
+	      if (res.status == 200) {
+		    let resp = JSON.parse(res.data);
 		    console.log(resp["bestMatches"]);
 		    let bestMatch = resp.bestMatches[0];
 		    let symbol = bestMatch["1. symbol"];
