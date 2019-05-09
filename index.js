@@ -21,7 +21,7 @@ assistant.intent('Opening Price', conv => {
       .then( (res) => {
       	  console.log(res.status);
 	      if (res.status == 200) {
-		    let resp = JSON.parse(res.data);
+		    let resp = res.data;
 		    console.log(resp["bestMatches"]);
 		    let bestMatch = resp.bestMatches[0];
 		    let symbol = bestMatch["1. symbol"];
