@@ -42,7 +42,7 @@ assistant.intent('Opening Price', conv => {
 					resolve('Low of ' + name + " is " + res.data["Global Quote"]["04. low"] + " " +curr);
 				}
 				else if(query === 'current price'){
-					resolve('Current trading price of ' + name + " is " + res.data["Global Quote"]["04. low"] + ", with a change of " + res.data["Global Quote"]["10. change percent"] + " or " + res.data["Global Quote"]["09. change"] + " " + curr);
+					resolve('Current trading price of ' + name + " is " + res.data["Global Quote"]["04. low"] + curr + ", with a change of " + res.data["Global Quote"]["10. change percent"] + " or " + res.data["Global Quote"]["09. change"] + " " + curr);
 				}
 				else if(query === 'volume'){
 					resolve('Volume of ' + name + " is " + res.data["Global Quote"]["06. volume"] + " " + curr);
