@@ -18,16 +18,17 @@ assistant.intent('Opening Price', conv => {
 	  let name = conv.parameters.any;
 	  const priceType = conv.parameters['price-type'];
       axios.get('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords='+name+'&apikey='+apiKey)
-      .then( (res) => {
+      .then( (result) => {
       	  console.log(res.status);
-	      if (res.status == 200) {
-		    let resp = res.data;
+	      if (result.status == 200) {
+		    let resp = result.data;
 		    console.log(resp["bestMatches"]);
 		    let bestMatch = resp.bestMatches[0];
 		    let symbol = bestMatch["1. symbol"];
 		    let curr = bestMatch["8. currency"];
 		    axios.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+symbol+'&apikey='+apiKey)
 		    .then((res) => {
+		    	console.log(res)
 			    console.log('Hello, welcome ' + name + priceType+symbol+curr+res["Global Quote"]["08. previous close"]);
 			    if(priceType === 'closing price'){
 			   		resolve('Closing Price of' + name +" is "+res["Global Quote"]["08. previous close"]+" "+curr); 	
