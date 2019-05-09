@@ -26,29 +26,36 @@ assistant.intent('Opening Price', conv => {
 		    let bestMatch = resp.bestMatches[0];
 		    let symbol = bestMatch["1. symbol"];
 		    let curr = bestMatch["8. currency"];
-		    console.log('Hello, welcome ' + name + priceType+symbol+curr);
-		     
-		 //     if(priceType === 'closing price'){
-
-			// }
-			// else if(priceType === 'opening price'){
-
-			// }
-			// else if(priceType === 'high price'){
-
-			// }
-			// else if(priceType === 'low price'){
-
-			// }
-		
-	       resolve('Hello, welcome ' + name + priceType+symbol+curr);
+		    axios.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+symbol+'&apikey='+apiKey)
+		    .then((res) => {
+			    console.log('Hello, welcome ' + name + priceType+symbol+curr);
+			    if(priceType === 'closing price'){
+			   		resolve('Closing Price of' + name +" is "+resp["Global Quote"]["08. previous close"]+" "+curr); 	
+				}
+				else if(priceType === 'opening price'){
+					resolve('Closing Price of' + name +" is "+resp["Global Quote"]["08. previous close"]+" "+curr);
+				}
+				else if(priceType === 'high price'){
+					resolve('Closing Price of' + name +" is "+resp["Global Quote"]["08. previous close"]+" "+curr);
+				}
+				else if(priceType === 'low price'){
+					resolve('Closing Price of' + name +" is "+resp["Global Quote"]["08. previous close"]+" "+curr);
+				}
+			})
+			.catch((err) => {
+				reject(err);
+			});
+	       
       }
 	  })
-	  .catch((error)=>{console.log(error);})
-}).then(result => {
-	  	console.log(result)
+	  .catch((error) => {
+	  	reject(error);
+	  });
+	})
+	.then(result => {
 	    conv.ask(result);
-	  }).catch(error => {
+	 })
+	.catch(error => {
 	    conv.close(error);
 	  });
 });
