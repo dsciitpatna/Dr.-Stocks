@@ -19,7 +19,6 @@ assistant.intent('Opening Price', conv => {
 	  const priceType = conv.parameters['price-type'];
       axios.get('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords='+name+'&apikey='+apiKey)
       .then( (result) => {
-      	  console.log(res.status);
 	      if (result.status == 200) {
 		    let resp = result.data;
 		    console.log(resp["bestMatches"]);
@@ -31,16 +30,16 @@ assistant.intent('Opening Price', conv => {
 		    	console.log(res)
 			    console.log('Hello, welcome ' + name + priceType+symbol+curr+res["Global Quote"]["08. previous close"]);
 			    if(priceType === 'closing price'){
-			   		resolve('Closing Price of' + name +" is "+res["Global Quote"]["08. previous close"]+" "+curr); 	
+			   		resolve('Closing Price of' + name +" is "+res.data["Global Quote"]["08. previous close"]+" "+curr); 	
 				}
 				else if(priceType === 'opening price'){
-					resolve('Closing Price of' + name +" is "+res["Global Quote"]["08. previous close"]+" "+curr);
+					resolve('Closing Price of' + name +" is "+res.data["Global Quote"]["08. previous close"]+" "+curr);
 				}
 				else if(priceType === 'high price'){
-					resolve('Closing Price of' + name +" is "+res["Global Quote"]["08. previous close"]+" "+curr);
+					resolve('Closing Price of' + name +" is "+res.data["Global Quote"]["08. previous close"]+" "+curr);
 				}
 				else if(priceType === 'low price'){
-					resolve('Closing Price of' + name +" is "+res["Global Quote"]["08. previous close"]+" "+curr);
+					resolve('Closing Price of' + name +" is "+res.data["Global Quote"]["08. previous close"]+" "+curr);
 				}
 			})
 			.catch((err) => {
