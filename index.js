@@ -28,18 +28,18 @@ assistant.intent('Opening Price', conv => {
 		    let curr = bestMatch["8. currency"];
 		    axios.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+symbol+'&apikey='+apiKey)
 		    .then((res) => {
-			    console.log('Hello, welcome ' + name + priceType+symbol+curr);
+			    console.log('Hello, welcome ' + name + priceType+symbol+curr+res["Global Quote"]["08. previous close"]);
 			    if(priceType === 'closing price'){
-			   		resolve('Closing Price of' + name +" is "+resp["Global Quote"]["08. previous close"]+" "+curr); 	
+			   		resolve('Closing Price of' + name +" is "+res["Global Quote"]["08. previous close"]+" "+curr); 	
 				}
 				else if(priceType === 'opening price'){
-					resolve('Closing Price of' + name +" is "+resp["Global Quote"]["08. previous close"]+" "+curr);
+					resolve('Closing Price of' + name +" is "+res["Global Quote"]["08. previous close"]+" "+curr);
 				}
 				else if(priceType === 'high price'){
-					resolve('Closing Price of' + name +" is "+resp["Global Quote"]["08. previous close"]+" "+curr);
+					resolve('Closing Price of' + name +" is "+res["Global Quote"]["08. previous close"]+" "+curr);
 				}
 				else if(priceType === 'low price'){
-					resolve('Closing Price of' + name +" is "+resp["Global Quote"]["08. previous close"]+" "+curr);
+					resolve('Closing Price of' + name +" is "+res["Global Quote"]["08. previous close"]+" "+curr);
 				}
 			})
 			.catch((err) => {
