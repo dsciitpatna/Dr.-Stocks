@@ -44,6 +44,7 @@ assistant.intent('Opening Price', conv => {
 	       resolve('Hello, welcome ' + name + priceType+symbol+curr);
       }
 	  }).then(result => {
+	  	console.log(result)
 	    conv.ask(result);
 	  }).catch(error => {
 	    conv.close(error);
