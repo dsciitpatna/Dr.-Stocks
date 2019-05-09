@@ -28,7 +28,7 @@ assistant.intent('Opening Price', conv => {
 		    axios.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+symbol+'&apikey='+apiKey)
 		    .then((res) => {
 		    	console.log(res)
-			    console.log('Hello, welcome ' + name + priceType+symbol+curr+res["Global Quote"]["08. previous close"]);
+			    console.log('Hello, welcome ' + name + priceType+symbol+curr+res.data["Global Quote"]["08. previous close"]);
 			    if(priceType === 'closing price'){
 			   		resolve('Closing Price of' + name +" is "+res.data["Global Quote"]["08. previous close"]+" "+curr); 	
 				}
